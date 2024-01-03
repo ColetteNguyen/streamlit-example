@@ -14,11 +14,8 @@ phone_number = st.text_input('Phone number')
 email = st.text_input('Email')
 resident_unit_number = st.text_input('Resident Unit number')
 agree = st.checkbox('I agree to the PDPC policy')
-st.button("Submit", type="primary")
 if st.button('Submit'):
     st.write('Thank you')
-else:
-    st.write('Goodbye')
 
 
 
