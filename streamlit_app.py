@@ -8,7 +8,7 @@ import streamlit as st
 """
 
 whatsapp_number = st.text_input('WhatsApp number')
-MCST number = st.text_input('MCST number')
+mcst_number = st.text_input('MCST number')
 name = st.text_input('Name')
 phone_number = st.text_input('Phone number')
 email = st.text_input('Email')
