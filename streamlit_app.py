@@ -9,10 +9,9 @@ import streamlit as st
 
 whatsapp_number = st.text_input('WhatsApp number')
 mcst_number = st.text_input('MCST number')
-name = st.text_input('Name')
-phone_number = st.text_input('Phone number')
-email = st.text_input('Email')
 resident_unit_number = st.text_input('Resident Unit number')
+name = st.text_input('Name')
+email = st.text_input('Email')
 agree = st.checkbox('I agree to the PDPC policy')
 if st.button('Submit'):
     st.write('Thank you')
