@@ -17,24 +17,13 @@ collection = dbname["roles"]
 required_fields = ['WhatsApp number', 'MCST number', 'Resident Unit number', 'Name']
 optional_fields = ['Email']
 
-# Initialize session state
-if 'form_data' not in st.session_state:
-    st.session_state.form_data = {
-        'whatsapp_number': '',
-        'mcst_number': '',
-        'resident_unit_number': '',
-        'name': '',
-        'email': '',
-        'agree': False
-    }
-
 # Display input fields with labels indicating required and optional fields
-whatsapp_number = st.text_input('WhatsApp number* (Required)', key='whatsapp_number', value=st.session_state.form_data['whatsapp_number'])
-mcst_number = st.text_input('MCST number* (Required)', key='mcst_number', value=st.session_state.form_data['mcst_number'])
-resident_unit_number = st.text_input('Resident Unit number* (Required)', key='resident_unit_number', value=st.session_state.form_data['resident_unit_number'])
-name = st.text_input('Name* (Required)', key='name', value=st.session_state.form_data['name'])
-email = st.text_input('Email (Optional)', key='email', value=st.session_state.form_data['email'])
-agree = st.checkbox('I agree to the PDPC policy (Required)', key='agree', value=st.session_state.form_data['agree'])
+whatsapp_number = st.text_input('WhatsApp number* (Required)')
+mcst_number = st.text_input('MCST number* (Required)')
+resident_unit_number = st.text_input('Resident Unit number* (Required)')
+name = st.text_input('Name* (Required)')
+email = st.text_input('Email (Optional)')
+agree = st.checkbox('I agree to the PDPC policy (Required)')
 
 submitted = False
 
@@ -49,8 +38,7 @@ if st.button('Submit'):
         if existing_record:
             st.warning(f'The WhatsApp number {whatsapp_number} already exists. You can use the chatbot.')
         else:
-            # Update session state with form data
-            st.session_state.form_data = {
+            form_data = {
                 'role': 'resident',
                 'phone_number': whatsapp_number,
                 'mcst_no': mcst_number,
@@ -59,23 +47,16 @@ if st.button('Submit'):
                 'email': email
             }
 
-            form_data = st.session_state.form_data
             collection.insert_one(form_data)
 
             # Display a success message in a popup
             st.success('Data submitted successfully!')
-
             # Reset form fields after successful submission
             submitted = True
-            st.session_state.form_data = {
-                'whatsapp_number': '',
-                'mcst_number': '',
-                'resident_unit_number': '',
-                'name': '',
-                'email': '',
-                'agree': False
-            }
-
-
-        
-
+            
+whatsapp_number = st.text_input('WhatsApp number* (Required)')
+mcst_number = st.text_input('MCST number* (Required)')
+resident_unit_number = st.text_input('Resident Unit number* (Required)')
+name = st.text_input('Name* (Required)')
+email = st.text_input('Email (Optional)')
+agree = st.checkbox('I agree to the PDPC policy (Required)')
