@@ -40,14 +40,14 @@ if st.button('Submit'):
         # Display a success message in a popup
         st.success('Data submitted successfully!')
         st.write('Thank you')
-
-# Reset form fields after successful submission
-whatsapp_number = ""
-mcst_number = ""
-resident_unit_number = ""
-name = ""
-email = ""
-agree = False
-
+        
+        # Reset form fields after successful submission
+        submitted = True
+        whatsapp_number = ""
+        mcst_number = ""
+        resident_unit_number = ""
+        name = ""
+        email = ""
+        agree = False
 
 
