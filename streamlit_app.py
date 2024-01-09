@@ -2,6 +2,12 @@ import altair as alt
 import numpy as np
 import pandas as pd
 import streamlit as st
+import pymongo
+
+CONNECTION_STRING = "mongodb+srv://colette:6xUTl6YRSY8mHoaK@telegrambot.zulss7f.mongodb.net/test"
+client = pymongo.MongoClient(CONNECTION_STRING)
+dbname = client['new_facility_booking']
+collection = dbname["roles"]
 
 """
 # Welcome to the Facility Management chatbot!
