@@ -49,7 +49,21 @@ if st.button('Submit'):
         if existing_record:
             st.warning(f'The WhatsApp number {whatsapp_number} already exists. You can use the chatbot.')
         else:
-            # Update session state with form data
+            form_data = {
+                'role': 'resident',
+                'phone_number': whatsapp_number,
+                'mcst_no': mcst_number,
+                'resident_unit_number': resident_unit_number,
+                'name': name,
+                'email': email,
+            }
+
+            collection.insert_one(form_data)
+
+            # Display a success message in a popup
+            st.success('Data submitted successfully! Now, you can use the chatbot.')
+
+            # Manually reset form fields after successful submission
             st.session_state.form_data = {
                 'whatsapp_number': '',
                 'mcst_number': '',
@@ -59,27 +73,5 @@ if st.button('Submit'):
                 'agree': False
             }
 
-            form_data = {
-                'whatsapp_number': whatsapp_number,
-                'mcst_number': mcst_number,
-                'resident_unit_number': resident_unit_number,
-                'name': name,
-                'email': email,
-                'agree': agree
-            }
-
-            collection.insert_one(form_data)
-
-            # Display a success message in a popup
-            st.success('Data submitted successfully!')
-            st.write('Thank you')
-
-            # Reset form fields after successful submission
             submitted = True
 
-if not submitted:
-    # Optional: Display the data in a table for verification
-    st.subheader('Submitted Data:')
-    data = list(collection.find())
-    df = pd.DataFrame(data)
-    st.table(df)
