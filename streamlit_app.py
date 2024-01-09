@@ -12,12 +12,12 @@ collection = dbname["roles"]
 """
 # Welcome to the Facility Management chatbot!
 """
-
-whatsapp_number = st.text_input('WhatsApp number')
-mcst_number = st.text_input('MCST number')
-resident_unit_number = st.text_input('Resident Unit number')
-name = st.text_input('Name')
-email = st.text_input('Email')
+# Display input fields with labels indicating required and optional fields
+whatsapp_number = st.text_input('WhatsApp number* (Required)')
+mcst_number = st.text_input('MCST number* (Required)')
+resident_unit_number = st.text_input('Resident Unit number* (Required)')
+name = st.text_input('Name* (Required)')
+email = st.text_input('Email (Optional)')
 agree = st.checkbox('I agree to the PDPC policy')
 
 if st.button('Submit'):
@@ -41,13 +41,13 @@ if st.button('Submit'):
         st.success('Data submitted successfully!')
         st.write('Thank you')
 
-        # Reset form fields after successful submission
-        whatsapp_number = ""
-        mcst_number = ""
-        resident_unit_number = ""
-        name = ""
-        email = ""
-        agree = False
+# Reset form fields after successful submission
+whatsapp_number = ""
+mcst_number = ""
+resident_unit_number = ""
+name = ""
+email = ""
+agree = False
 
 
 
