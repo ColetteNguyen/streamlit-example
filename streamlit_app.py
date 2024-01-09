@@ -19,8 +19,30 @@ resident_unit_number = st.text_input('Resident Unit number')
 name = st.text_input('Name')
 email = st.text_input('Email')
 agree = st.checkbox('I agree to the PDPC policy')
+
 if st.button('Submit'):
-    st.write('Thank you')
+    # Check if the user has agreed to the policy
+    if not agree:
+        st.warning('Please agree to the PDPC policy before submitting.')
+    else:
+        # Create a dictionary with the form data
+        form_data = {
+            'role': 'resident,
+            'phone_number': whatsapp_number,
+            'mcst_no': mcst_number,
+            'resident_unit_number': resident_unit_number,
+            'name': name,
+            'email': email
+        }
 
+        # Insert the data into MongoDB
+        collection.insert_one(form_data)
 
+        # Display a success message
+        st.success('Data submitted successfully!')
 
+# Optional: Display the data in a table for verification
+st.subheader('Submitted Data:')
+data = list(collection.find())
+df = pd.DataFrame(data)
+st.table(df)
