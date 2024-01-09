@@ -27,7 +27,7 @@ if st.button('Submit'):
     else:
         # Create a dictionary with the form data
         form_data = {
-            'role': 'resident,
+            'role': 'resident',
             'phone_number': whatsapp_number,
             'mcst_no': mcst_number,
             'resident_unit_number': resident_unit_number,
