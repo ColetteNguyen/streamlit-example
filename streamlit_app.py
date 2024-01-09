@@ -21,7 +21,7 @@ with st.form(key='myform', clear_on_submit=True):
     name = st.text_input('Name* (Required)')
     email = st.text_input('Email (Optional)')
     agree = st.checkbox('I agree to the PDPC policy (Required)')
-    submit_button = st.form_submit_button('Submit)
+    submit_button = st.form_submit_button('Submit')
     submitted = False
 
 if submit_button:
